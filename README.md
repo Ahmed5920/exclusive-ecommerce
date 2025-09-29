@@ -2,6 +2,10 @@
 
 Exclusive E-commerce is a modern, responsive online store built with **React**, **Redux**, **React Router**, and **Firebase**. It features user authentication, Google login, a dynamic product catalog, a shopping cart, and secure checkout simulation.
 
+## Live Demo
+
+Check out the project live here: [Exclusive E-commerce](https://exclusive-ecommerce-chi.vercel.app)
+
 ## Features
 
 * User authentication (Email/Password & Google login)
