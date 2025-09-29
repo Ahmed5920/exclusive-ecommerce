@@ -21,6 +21,7 @@ import { replaceCart } from "./store/cartSlice";
 import CheckOutPage from "./pages/CheckOutPage";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
 import MyAccount from "./pages/MyAccount";
+import ScrollToTop from "./components/UI/ScrollToTop";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,49 +50,55 @@ function App() {
     return () => unsubscribe();
   }, [dispatch]);
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Navigate to="/home" replace />} />
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/home" replace />} />
 
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signUp" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signUp" element={<SignupPage />} />
 
-        <Route path="/home">
-          <Route index element={<HomePage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="not-Found" element={<NotFoundPage />} />
-          <Route path="cart" element={<CartPage />} />
-          <Route
-            path="my-account"
-            element={
-              <ProtectedRoute>
-                <MyAccount />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="cart/checkout"
-            element={
-              <ProtectedRoute>
-                <CheckOutPage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/home">
+            <Route index element={<HomePage />} />
+            <Route path="contact" element={<ContactPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="not-Found" element={<NotFoundPage />} />
+            <Route path="cart" element={<CartPage />} />
+            <Route
+              path="my-account"
+              element={
+                <ProtectedRoute>
+                  <MyAccount />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="cart/checkout"
+              element={
+                <ProtectedRoute>
+                  <CheckOutPage />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route element={<ProductLayout />}>
-            <Route path="all-products" element={<AllProductPage />} />
-            <Route path=":category" element={<CategoryPage />} />
+            <Route element={<ProductLayout />}>
+              <Route path="all-products" element={<AllProductPage />} />
+              <Route path=":category" element={<CategoryPage />} />
+            </Route>
+            <Route
+              path="all-products/:productId"
+              element={<ProductDetailsPage />}
+            />
+            <Route
+              path=":category/:productId"
+              element={<ProductDetailsPage />}
+            />
           </Route>
-          <Route
-            path="all-products/:productId"
-            element={<ProductDetailsPage />}
-          />
-          <Route path=":category/:productId" element={<ProductDetailsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 }
 

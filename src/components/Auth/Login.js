@@ -10,6 +10,7 @@ import { replaceCart } from "../../store/cartSlice";
 
 const Login = () => {
   const { loading, error } = useSelector((state) => state.auth);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(null);
   const navigate = useNavigate();
@@ -43,15 +44,27 @@ const Login = () => {
       dispatch(setLoading(false));
     }
   };
-  const loginWithGoogleHanadler = async () => {
-    const res = await loginWithGoogle();
-    if (res.error) {
-      alert("Google login failed: " + res.error.message);
-    } else {
-      console.log("Logged in with Google:", res);
+  const loginWithGoogleHandler = async () => {
+    if (googleLoading) return; // prevent multiple clicks
+    setGoogleLoading(true);
+
+    try {
+      const res = await loginWithGoogle();
+      if (res.error) {
+        if (res.error.code === "auth/popup-closed-by-user") {
+          console.log("Google login cancelled by user.");
+        } else {
+          alert("Google login failed: " + res.error.message);
+        }
+      } else {
+        console.log("Logged in with Google:", res);
+        navigate("/home");
+      }
+    } finally {
+      setGoogleLoading(false);
     }
-    navigate("/home");
   };
+
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2">
       <div className="flex justify-center my-16 w-full">
@@ -96,14 +109,16 @@ const Login = () => {
             </div>
             <button
               type="button"
-              onClick={loginWithGoogleHanadler}
+              onClick={loginWithGoogleHandler}
+              disabled={googleLoading}
               className="flex items-center justify-center space-x-2 border rounded p-2 px-8"
             >
               <FcGoogle className="w-6 h-6" />
-              <span>Signin with Google</span>
+              <span>
+                {googleLoading ? "Signing in..." : "Sign in with Google"}
+              </span>
             </button>
           </form>
-          {/* i can remove it and add it in mainnavigation */}
           <Link to="/signUp">Create new account</Link>
         </div>
       </div>
