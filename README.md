@@ -26,6 +26,10 @@ Check out the project live here: [Exclusive E-commerce](https://exclusive-ecomme
 * **Tailwind CSS** – Styling and responsive design
 * **React Icons** – Icon library
 
+## Note
+
+This project is currently optimized for desktop. Some pages may not display correctly on mobile devices. Mobile responsiveness will be improved in future updates.
+
 ## Installation
 
 1. Clone the repository:
