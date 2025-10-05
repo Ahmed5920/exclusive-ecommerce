@@ -71,6 +71,12 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 * **Shopping Cart:** Add products to the cart, adjust quantity, and simulate checkout.
 * **Profile:** Users can edit their profile and change passwords.
 
+📷 Screenshots 
+<p align="center">
+  <img src="exclusive-ecommerce/src/assets/images/Screenshot_5-10-2025_11438_localhost.jpeg" alt="Home Screenshot" width="80%">
+  <img src="src/assets/images/Screenshot_5-10-2025_114332_localhost.jpeg" alt="About Screenshot" width="80%">
+</p>
+
 ## Folder Structure
 
 ```
