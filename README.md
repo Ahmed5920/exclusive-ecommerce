@@ -73,7 +73,7 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 
 📷 Screenshots 
 <p align="center">
-  <img src="src/assets/images/Screenshot_5-10-2025_11438_localhost.jpeg" alt="Home Screenshot" width="80%">
+  <img src="src/assets/images/Screenshot_5-10-2025_11438_localhost.jpeg" alt="Home Screenshot" width="80%"><br><br>
   <img src="src/assets/images/Screenshot_5-10-2025_114332_localhost.jpeg" alt="About Screenshot" width="80%">
 </p>
 
