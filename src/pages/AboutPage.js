@@ -7,14 +7,14 @@ import AboutServices from "../components/about/AboutServices";
 const AboutPage = () => {
   return (
     <Fragment>
-      <div className="ml-24 space-x-3 mt-16 text-gray-400">
+      <div className="mt-8 md:mt-16 text-gray-400 px-6 md:px-24 space-x-2">
         <Link to="/home">Home</Link>
         <span>/</span>
         <span className="text-black">About</span>
       </div>
-      <AboutDescription/>
-      <AboutTeam/>
-      <AboutServices/>
+      <AboutDescription />
+      <AboutTeam />
+      <AboutServices />
     </Fragment>
   );
 };
