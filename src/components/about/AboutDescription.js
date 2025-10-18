@@ -10,7 +10,6 @@ const AboutDescription = () => {
     "flex flex-col items-center border p-10 hover:bg-red-500 cursor-default rounded-md";
   return (
     <Fragment>
-      {/* Make the top section stack on mobile */}
       <div className="flex flex-col md:flex-row items-center justify-between pt-12 gap-16 max-md:px-6 max-md:text-center">
         <div className="ml-24 pt-12 max-w-xl max-md:m-0">
           <h1 className="text-5xl font-bold mb-6 max-md:text-3xl">Our Story</h1>
@@ -34,10 +33,13 @@ const AboutDescription = () => {
         />
       </div>
 
-      {/* Make stats section wrap on mobile */}
       <div className="flex flex-wrap p-40 gap-8 justify-center items-center max-md:p-6">
         <button className={IconClass + " max-md:p-4 max-md:w-40"}>
-          <img src={sallersActiveIcon} alt="Sales Icon" className="max-md:w-12" />
+          <img
+            src={sallersActiveIcon}
+            alt="Sales Icon"
+            className="max-md:w-12"
+          />
           <span className="font-bold text-3xl max-md:text-xl">10.5K</span>
           <span className="max-md:text-xs">Sallers active our site</span>
         </button>
@@ -51,12 +53,20 @@ const AboutDescription = () => {
           <span className="max-md:text-xs">Monthly Product Sale</span>
         </button>
         <button className={IconClass + " max-md:p-4 max-md:w-40"}>
-          <img src={customerActiveIcon} alt="Customer Icon" className="max-md:w-12" />
+          <img
+            src={customerActiveIcon}
+            alt="Customer Icon"
+            className="max-md:w-12"
+          />
           <span className="font-bold text-3xl max-md:text-xl">45.5k</span>
           <span className="max-md:text-xs">Customer active in our site</span>
         </button>
         <button className={IconClass + " max-md:p-4 max-md:w-40"}>
-          <img src={annualGrossIcon} alt="Annual Gross Icon" className="max-md:w-12" />
+          <img
+            src={annualGrossIcon}
+            alt="Annual Gross Icon"
+            className="max-md:w-12"
+          />
           <span className="font-bold text-3xl max-md:text-xl">25k</span>
           <span className="max-md:text-xs">Anual gross sale in our site</span>
         </button>
