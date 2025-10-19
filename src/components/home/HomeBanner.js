@@ -24,7 +24,7 @@ const HomeBanner = ({ banners }) => {
     <div className="flex flex-col md:flex-row items-center md:items-start">
       {/* Sidebar */}
       <div className="hidden md:block w-full md:w-64 border-r-0 md:border-r-2 md:h-64">
-        <ul className="grid grid-cols-4 space-y-3 ml-4 mt-12">
+        <ul className="space-y-3 ml-4 mt-12">
           {categories.map((category) => (
             <li key={category.path}>
               <NavLink
