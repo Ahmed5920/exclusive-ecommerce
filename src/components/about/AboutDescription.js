@@ -33,8 +33,8 @@ const AboutDescription = () => {
         />
       </div>
 
-      <div className="flex flex-wrap p-40 gap-8 justify-center items-center max-md:p-6">
-        <button className={IconClass + " max-md:p-4 max-md:w-40"}>
+      <div className="grid grid-cols-2 md:grid-cols-4 p-40 md:p-32 gap-8 justify-center items-center max-md:p-6">
+        <button className={IconClass + " max-md:p-4 max-md:w-36"}>
           <img
             src={sallersActiveIcon}
             alt="Sales Icon"
@@ -43,7 +43,7 @@ const AboutDescription = () => {
           <span className="font-bold text-3xl max-md:text-xl">10.5K</span>
           <span className="max-md:text-xs">Sallers active our site</span>
         </button>
-        <button className={IconClass + " max-md:p-4 max-md:w-40"}>
+        <button className={IconClass + " max-md:p-4 max-md:w-36"}>
           <div className="w-20 h-20 rounded-full bg-gray-300 flex items-center justify-center max-md:w-14 max-md:h-14">
             <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center max-md:w-8 max-md:h-8">
               <FaDollarSign className="text-white text-2xl max-md:text-lg" />
@@ -52,7 +52,7 @@ const AboutDescription = () => {
           <span className="font-bold text-3xl max-md:text-xl">33k</span>
           <span className="max-md:text-xs">Monthly Product Sale</span>
         </button>
-        <button className={IconClass + " max-md:p-4 max-md:w-40"}>
+        <button className={IconClass + " max-md:p-4 max-md:w-36"}>
           <img
             src={customerActiveIcon}
             alt="Customer Icon"
@@ -61,7 +61,7 @@ const AboutDescription = () => {
           <span className="font-bold text-3xl max-md:text-xl">45.5k</span>
           <span className="max-md:text-xs">Customer active in our site</span>
         </button>
-        <button className={IconClass + " max-md:p-4 max-md:w-40"}>
+        <button className={IconClass + " max-md:p-4 max-md:w-36"}>
           <img
             src={annualGrossIcon}
             alt="Annual Gross Icon"

@@ -10,11 +10,11 @@ const AboutTeam = () => {
   return (
     <Fragment>
       <div className="flex flex-col items-center max-md:px-4">
-        <div className="flex justify-center items-center space-x-11 p-2 max-md:flex-wrap max-md:space-x-0 max-md:gap-8">
+        <div className="grid grid-cols-3 justify-center items-center space-x-11 p-2 max-md:flex-wrap max-md:space-x-0 max-md:gap-8">
           {managersData[activeGroup].map((item, idx) => (
             <div key={idx} className="text-center">
               <img
-                className="bg-gray-300 p-7 pb-0 rounded-lg max-md:w-44 mx-auto"
+                className="bg-gray-300 p-7 pb-0 rounded-lg max-md:w-44 mx-auto size-28"
                 src={item.src}
                 alt={item.alt}
               />
