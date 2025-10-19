@@ -91,7 +91,7 @@ const HomeBanner = ({ banners }) => {
                   <HiOutlineArrowRight className="mt-2 text-xl font-thin" />
                 </Link>
               </div>
-              <div className="md:ml-[12%] w-4/5 md:w-1/3 h-auto mb-2">
+              <div className="md:ml-[12%] w-4/5 md:w-1/3 h-auto mb-2 md:mb-0">
                 <img
                   className="w-full h-full object-cover"
                   src={banner.imageUrl}
