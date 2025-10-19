@@ -14,7 +14,7 @@ const AboutTeam = () => {
           {managersData[activeGroup].map((item, idx) => (
             <div key={idx} className="text-center">
               <img
-                className="bg-gray-300 p-7 pb-0 rounded-lg max-md:w-44 mx-auto size-28"
+                className="bg-gray-300 p-3 max-md:h-28 md:p-7 pb-0 rounded-lg max-md:w-44 mx-auto object-contain "
                 src={item.src}
                 alt={item.alt}
               />
