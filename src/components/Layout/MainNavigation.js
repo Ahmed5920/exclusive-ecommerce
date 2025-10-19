@@ -30,13 +30,12 @@ const MainNavigation = () => {
   };
 
   return (
-    <header className="w-full flex items-center justify-between px-4 md:px-8 py-4 border-b-2 relative">
-      {/* Logo */}
-      <Link to="/home" className="text-2xl font-bold">
+    <header className="w-full flex items-center justify-between px-4 md:px-8 py-4 md:h-20 border-b-2 relative">
+      <Link to="/home" className="text-2xl font-bold md:ml-20">
         Exclusive
       </Link>
 
-      {/* Hamburger button - Mobile only */}
+      {/*  button Mobile only */}
       <button
         className="md:hidden flex items-center justify-center"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -113,39 +112,52 @@ const MainNavigation = () => {
         </div>
 
         {/* Account Dropdown */}
-        <div className="relative group">
-          <button className="flex items-center focus:outline-none">
+        <button className="relative group focus-within:outline-none">
+          <div type="button" className="flex items-center focus:outline-none">
             <MdOutlineAccountCircle size={26} />
-          </button>
-          <div className="absolute z-10 top-full right-0 mt-1 bg-gradient-to-tl from-gray-700 to-violet-300 text-white rounded-lg w-56 px-4 py-2 gap-y-1 shadow-md scale-y-0 group-focus-within:scale-y-100 origin-top transition-transform duration-300">
-            {loggedIn ? (
-              <div className="flex flex-col items-start space-y-3 p-2">
-                <div
-                  className="flex items-center gap-2 cursor-pointer"
-                  onClick={() => navigate("/home/my-account")}
-                >
-                  <MdOutlineAccountCircle size={20} />
-                  <span>Manage My Account</span>
-                </div>
-                <div
-                  className="flex items-center gap-2 cursor-pointer"
-                  onClick={logHandler}
-                >
-                  <TbLogout2 size={20} />
-                  <span>Logout</span>
-                </div>
-              </div>
-            ) : (
-              <div
-                className="flex items-center gap-2 cursor-pointer"
-                onClick={logHandler}
-              >
-                <TbLogin2 size={20} />
-                <span>Login</span>
-              </div>
-            )}
           </div>
-        </div>
+          <div className="absolute z-10 top-full right-0 mt-1 bg-gradient-to-tl from-gray-700 to-violet-300 text-white rounded-lg w-56 px-4 py-2 gap-y-1 shadow-md scale-y-0 group-focus-within:scale-y-100 origin-top transition-transform duration-300">
+            <div
+              type="button"
+              onClick={() => {
+                document.activeElement.blur();
+              }}
+            >
+              {loggedIn && (
+                <div className="flex flex-col items-start justify-center space-y-3 p-2">
+                  <div
+                    className="flex flex-row items-center justify-center gap-2 focus:outline-none"
+                    onClick={() => {
+                      navigate("/home/my-account");
+                    }}
+                  >
+                    <MdOutlineAccountCircle size={20} />
+                    <span>Manage My Account</span>
+                  </div>
+                  <div
+                    className="flex flex-row items-center gap-2 focus:outline-none"
+                    onClick={() => {
+                      logHandler();
+                    }}
+                  >
+                    <TbLogout2 size={20} />
+                    <span>logout</span>
+                  </div>
+                </div>
+              )}
+              {!loggedIn && (
+                <div
+                  className="flex flex-row items-center gap-2 focus:outline-none"
+                  onClick={() => {
+                    logHandler();
+                  }}
+                >
+                  <TbLogin2 /> <span>login</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </button>
       </div>
 
       {/* Mobile Menu */}
