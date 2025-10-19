@@ -44,8 +44,9 @@ const Login = () => {
       dispatch(setLoading(false));
     }
   };
+
   const loginWithGoogleHandler = async () => {
-    if (googleLoading) return; // prevent multiple clicks
+    if (googleLoading) return;
     setGoogleLoading(true);
 
     try {
@@ -67,24 +68,25 @@ const Login = () => {
 
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2">
-      <div className="flex justify-center my-16 w-full">
+      {/* Image */}
+      <div className="w-full h-64 md:h-auto">
         <img
           className="w-full h-full object-cover"
           src={loginImage}
           alt="loginimage"
         />
       </div>
-      <div className="flex justify-center items-center w-full">
-        <div className="flex flex-col items-start space-y-4 mr-32">
-          <h1 className="text-4xl font-normal">Log in to Exclusive</h1>
+
+      {/* Form */}
+      <div className="flex justify-center items-center w-full px-4 md:px-16 py-10">
+        <div className="flex flex-col items-start space-y-4 w-full max-w-md">
+          <h1 className="text-3xl md:text-4xl font-normal">Log in to Exclusive</h1>
           <p>Enter your details below</p>
-          {error && <p className="text-red-500 w-72">{error}</p>}
-          <form
-            className="flex flex-col w-96 space-y-4"
-            onSubmit={loginHandler}
-          >
+          {error && <p className="text-red-500 w-full">{error}</p>}
+
+          <form className="flex flex-col w-full space-y-4" onSubmit={loginHandler}>
             <input
-              className="input-bottom"
+              className="input-bottom w-full"
               type="email"
               placeholder="Email"
               required
@@ -92,34 +94,37 @@ const Login = () => {
               onFocus={() => dispatch(setError(null))}
             />
             <input
-              className="input-bottom"
+              className="input-bottom w-full"
               type="password"
               placeholder="Password"
               required
               onChange={(e) => setPassword(e.target.value)}
               onFocus={() => dispatch(setError(null))}
             />
-            <div className="flex items-center space-x-32">
+
+            <div className="flex flex-col md:flex-row md:items-center md:space-x-4">
               <button
                 type="submit"
-                className="bg-red-500 text-white w-36 py-2 rounded px-8"
+                className="bg-red-500 text-white w-full md:w-auto py-2 rounded px-12"
               >
-                {loading ? "Loggin in..." : "Log in"}
+                {loading ? "Logging in..." : "Log in"}
               </button>
             </div>
+
             <button
               type="button"
               onClick={loginWithGoogleHandler}
               disabled={googleLoading}
-              className="flex items-center justify-center space-x-2 border rounded p-2 px-8"
+              className="flex items-center justify-center space-x-2 border rounded p-2 px-8 w-full"
             >
               <FcGoogle className="w-6 h-6" />
-              <span>
-                {googleLoading ? "Signing in..." : "Sign in with Google"}
-              </span>
+              <span>{googleLoading ? "Signing in..." : "Sign in with Google"}</span>
             </button>
           </form>
-          <Link to="/signUp">Create new account</Link>
+
+          <Link to="/signUp" className="mt-2 text-sm underline">
+            Create new account
+          </Link>
         </div>
       </div>
     </div>

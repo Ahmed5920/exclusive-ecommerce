@@ -44,24 +44,29 @@ const ProductDetailsPage = () => {
     );
   }
 
-  if(!product){
-    return <Navigate to="/home/not-found" replace/>
+  if (!product) {
+    return <Navigate to="/home/not-found" replace />;
   }
 
   return (
     <Fragment>
-      <div className="ml-24 space-x-3 mt-16 text-gray-400">
+      <div className="ml-4 md:ml-24 space-x-3 mt-8 md:mt-16 text-gray-400 text-sm md:text-base">
         <Link to="/home">Home</Link>
         <span>/</span>
         <Link to={`/home/${category}`}>{category}</Link>
         <span>/</span>
         <span className="text-black">{product.name}</span>
       </div>
-      <div className="flex mt-20">
-        <ProductDetailsImages product={product}/>
-        <ProductDetailsDescription product={product}/>
+
+      <div className="flex flex-col md:flex-row mt-10 md:mt-20 items-center md:items-start gap-8 md:gap-0">
+        <ProductDetailsImages product={product} />
+        <ProductDetailsDescription product={product} />
       </div>
-      <ProductDetailsRelatedItems product={product} productsCategory={productsCategory} />
+
+      <ProductDetailsRelatedItems
+        product={product}
+        productsCategory={productsCategory}
+      />
     </Fragment>
   );
 };

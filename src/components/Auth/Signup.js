@@ -17,7 +17,6 @@ const Signup = () => {
 
   const signUpHandler = async (e) => {
     e.preventDefault();
-    console.log(email);
     try {
       dispatch(setLoading(true));
       const userData = await signupUser(name, email, password);
@@ -25,9 +24,7 @@ const Signup = () => {
       navigate("/home");
     } catch (error) {
       console.error("Signup Error:", error);
-
       let friendlyMessage = "Something went wrong. Please try again later.";
-
       switch (error.code) {
         case "auth/email-already-in-use":
           friendlyMessage =
@@ -47,12 +44,12 @@ const Signup = () => {
         default:
           friendlyMessage = "Could not create account. Please try again.";
       }
-
       dispatch(setError(friendlyMessage));
     } finally {
       dispatch(setLoading(false));
     }
   };
+
   const loginWithGoogleHandler = async () => {
     if (googleLoading) return;
     setGoogleLoading(true);
@@ -73,20 +70,30 @@ const Signup = () => {
       setGoogleLoading(false);
     }
   };
+
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2">
-      <div className="flex justify-center my-16">
-        <img src={loginImage} alt="loginimage" />
+      {/* Image */}
+      <div className="w-full h-64 md:h-auto">
+        <img
+          className="w-full h-full object-cover"
+          src={loginImage}
+          alt="loginimage"
+        />
       </div>
-      <div className="flex justify-center items-center w-full">
-        <div className="flex flex-col items-start  w-96">
-          {error && <p className="text-red-500">{error}</p>}
-          <form className="space-y-4 mr-36 w-full" onSubmit={signUpHandler}>
-            <h1 className="text-4xl font-normal ">Create an account</h1>
+
+      {/* Form */}
+      <div className="flex justify-center items-center w-full px-4 md:px-16 py-10">
+        <div className="flex flex-col items-start w-full max-w-md space-y-4">
+          {error && <p className="text-red-500 w-full">{error}</p>}
+
+          <form className="w-full space-y-4" onSubmit={signUpHandler}>
+            <h1 className="text-3xl md:text-4xl font-normal">Create an account</h1>
             <p>Enter your details below</p>
+
             <div className="flex flex-col w-full space-y-4">
               <input
-                className="input-bottom"
+                className="input-bottom w-full"
                 type="text"
                 placeholder="Name"
                 required
@@ -94,7 +101,7 @@ const Signup = () => {
                 onFocus={() => dispatch(setError(null))}
               />
               <input
-                className="input-bottom"
+                className="input-bottom w-full"
                 type="email"
                 placeholder="Email"
                 required
@@ -102,7 +109,7 @@ const Signup = () => {
                 onFocus={() => dispatch(setError(null))}
               />
               <input
-                className="input-bottom"
+                className="input-bottom w-full"
                 type="password"
                 placeholder="Password"
                 required
@@ -110,10 +117,11 @@ const Signup = () => {
                 onFocus={() => dispatch(setError(null))}
               />
             </div>
-            <div className="flex flex-col space-y-4">
+
+            <div className="flex flex-col space-y-4 w-full">
               <button
                 type="submit"
-                className="bg-red-500 text-white p-2 rounded px-8"
+                className="bg-red-500 text-white py-2 rounded w-full"
               >
                 {loading ? "Creating..." : "Create Account"}
               </button>
@@ -121,18 +129,16 @@ const Signup = () => {
                 type="button"
                 onClick={loginWithGoogleHandler}
                 disabled={googleLoading}
-                className="flex items-center justify-center space-x-2 border rounded p-2 px-8"
+                className="flex items-center justify-center space-x-2 border rounded p-2 w-full"
               >
                 <FcGoogle className="w-6 h-6" />
-                <span>
-                  {googleLoading ? "Signing in..." : "Sign in with Google"}
-                </span>
+                <span>{googleLoading ? "Signing in..." : "Sign in with Google"}</span>
               </button>
-              \
             </div>
-            <div className="flex space-x-16">
+
+            <div className="flex flex-col md:flex-row justify-between items-center w-full mt-4">
               <p>Already have account?</p>
-              <Link className="border-b-2 border-slate-950" to="/login">
+              <Link className="border-b-2 border-slate-950 mt-2 md:mt-0" to="/login">
                 Log in
               </Link>
             </div>
