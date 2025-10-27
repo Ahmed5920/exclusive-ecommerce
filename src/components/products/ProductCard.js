@@ -50,6 +50,7 @@ const ProductCard = ({ product }) => {
           <img
             src={productImage}
             alt={product.name}
+            loading="lazy"
             className="max-w-full max-h-full object-contain py-12 px-4 mb-8 md:mb-0 cursor-pointer md:group-hover:mb-6 transition duration-500"
           />
         </Link>
